@@ -11,13 +11,24 @@ public class FileModel extends AbstractListModel {
     
     ArrayList<DisplayFile> filesList = new ArrayList<>();
 
+    public void dirClicked(int idx){
+        DisplayFile e=filesList.get(idx);
+        if(e.isDirectory()){
+            System.out.println(e.toPath());
+            this.displayCurrentDir(e);
+        }
+    }
 
     public void displayCurrentDir(File dir){
+        filesList.clear();
         File[] files = dir.listFiles();
+        filesList.add(new DisplayFile(dir.getParent(), ".."));
         for (File file : files) {
-            DisplayFile e= new DisplayFile(file.getAbsolutePath());
+            System.out.println(file.toPath());
+            DisplayFile e= new DisplayFile(file.getAbsolutePath(),file.getName());
             filesList.add(e);
         }
+        fireContentsChanged(this, 0, filesList.size()-1);
     }
     
     

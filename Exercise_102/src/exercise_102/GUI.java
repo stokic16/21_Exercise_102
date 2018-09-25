@@ -18,8 +18,10 @@ public class GUI extends javax.swing.JFrame {
      */
     FileModel model = new FileModel();
     File dir = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getFile());
+
     public GUI() {
         initComponents();
+        System.out.println(dir.toPath());
         jList1.setModel(model);
         model.displayCurrentDir(dir);
     }
@@ -43,6 +45,11 @@ public class GUI extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jList1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -60,6 +67,12 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jList1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jList1MouseClicked
+        if (evt.getClickCount() == 2) {
+            model.dirClicked(jList1.getSelectedIndex());
+        }
+    }//GEN-LAST:event_jList1MouseClicked
 
     /**
      * @param args the command line arguments

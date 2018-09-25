@@ -9,13 +9,16 @@ import java.io.File;
  */
 public class DisplayFile extends File{
 
-    public DisplayFile(String pathname) {
+    private String display;
+    public DisplayFile(String pathname,String display) {
         super(pathname);
+        this.display=display;
     }
 
     @Override
     public String toString() {
-        return super.getName();
+        return String.format("%s %d %d ",display,super.lastModified(),
+                super.getTotalSpace());
     }
     
     

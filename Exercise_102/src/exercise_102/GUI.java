@@ -18,11 +18,11 @@ public class GUI extends javax.swing.JFrame {
      */
     FileModel model = new FileModel();
     File dir = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().getFile());
-
+    MyListCellRenderer renderer = new MyListCellRenderer();
     public GUI() {
         initComponents();
-        System.out.println(dir.toPath());
         jList1.setModel(model);
+        jList1.setCellRenderer(renderer);
         model.displayCurrentDir(dir);
     }
 
@@ -40,11 +40,6 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jList1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jList1MouseClicked(evt);
@@ -110,7 +105,7 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JList<DisplayFile> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

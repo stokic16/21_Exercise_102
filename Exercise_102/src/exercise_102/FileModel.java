@@ -7,7 +7,7 @@ import javax.swing.AbstractListModel;
 /**
  * @author Kilian Stöckler
  */
-public class FileModel extends AbstractListModel {
+public class FileModel extends AbstractListModel<DisplayFile> {
     
     ArrayList<DisplayFile> filesList = new ArrayList<>();
 
@@ -38,7 +38,7 @@ public class FileModel extends AbstractListModel {
     }
 
     @Override
-    public Object getElementAt(int index) {
+    public DisplayFile getElementAt(int index) {
         return filesList.get(index);
     }
 

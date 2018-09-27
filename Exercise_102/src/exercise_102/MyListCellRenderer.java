@@ -20,11 +20,11 @@ public class MyListCellRenderer implements ListCellRenderer<DisplayFile>{
         label.setOpaque(true);
         label.setFont(new Font("Courier New",1,12));
         if(value.isDirectory()){
-            label.setBackground(Color.darkGray);
+            label.setBackground(Color.gray);
             label.setForeground(Color.red);
         }
         if(value.isFile()){
-            label.setBackground(Color.lightGray);
+            label.setBackground(Color.getColor("200"));
             label.setForeground(Color.blue);
         }
         return label;

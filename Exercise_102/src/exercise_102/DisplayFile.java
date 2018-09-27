@@ -19,8 +19,18 @@ public class DisplayFile extends File{
 
     @Override
     public String toString() {
-        return String.format("%-35s %s %d KB ",display,sdf.format(super.lastModified()).toString(),
-                this.length()/1024);
+        StringBuilder sb = new StringBuilder();
+        if(this.canWrite()){
+            sb.append("R");
+        }
+        if(this.canRead()){
+            sb.append("W");
+        }
+        if(this.canExecute()){
+            sb.append("X");
+        }
+        return String.format("%-35s %s %d KB %s",display,sdf.format(super.lastModified()).toString(),
+                this.length()/1024,sb.toString());
     }
 
     public String getDisplay() {

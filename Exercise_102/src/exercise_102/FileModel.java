@@ -2,6 +2,7 @@ package exercise_102;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.AbstractListModel;
 
 /**
@@ -22,12 +23,13 @@ public class FileModel extends AbstractListModel<DisplayFile> {
     public void displayCurrentDir(File dir){
         filesList.clear();
         File[] files = dir.listFiles();
-        filesList.add(new DisplayFile(dir.getParent(), ".."));
         for (File file : files) {
     
             DisplayFile e= new DisplayFile(file.getAbsolutePath(),file.getName());
             filesList.add(e);
         }
+        Collections.sort(filesList, new SortFiles());
+        filesList.add(0,new DisplayFile(dir.getParent(), ".."));
         fireContentsChanged(this, 0, filesList.size()-1);
     }
     

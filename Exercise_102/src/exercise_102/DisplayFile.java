@@ -22,6 +22,10 @@ public class DisplayFile extends File{
         return String.format("%-35s %s %d KB ",display,sdf.format(super.lastModified()).toString(),
                 this.length()/1024);
     }
+
+    public String getDisplay() {
+        return display;
+    }
     
     
 

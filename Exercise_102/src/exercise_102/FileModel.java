@@ -24,7 +24,7 @@ public class FileModel extends AbstractListModel<DisplayFile> {
         File[] files = dir.listFiles();
         filesList.add(new DisplayFile(dir.getParent(), ".."));
         for (File file : files) {
-            System.out.println(file.toPath());
+    
             DisplayFile e= new DisplayFile(file.getAbsolutePath(),file.getName());
             filesList.add(e);
         }

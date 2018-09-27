@@ -4,6 +4,7 @@ package exercise_102;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.ListCellRenderer;
@@ -17,6 +18,7 @@ public class MyListCellRenderer implements ListCellRenderer<DisplayFile>{
     public Component getListCellRendererComponent(JList<? extends DisplayFile> list, DisplayFile value, int index, boolean isSelected, boolean cellHasFocus) {
         JLabel label = new JLabel(value.toString());
         label.setOpaque(true);
+        label.setFont(new Font("Courier New",1,12));
         if(value.isDirectory()){
             label.setBackground(Color.darkGray);
             label.setForeground(Color.red);

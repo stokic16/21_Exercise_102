@@ -3,6 +3,7 @@
 package exercise_102;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 
 /**
  * @author Kilian Stöckler
@@ -10,6 +11,7 @@ import java.io.File;
 public class DisplayFile extends File{
 
     private String display;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
     public DisplayFile(String pathname,String display) {
         super(pathname);
         this.display=display;
@@ -17,8 +19,8 @@ public class DisplayFile extends File{
 
     @Override
     public String toString() {
-        return String.format("%s %d %d ",display,super.lastModified(),
-                super.getTotalSpace());
+        return String.format("%-35s %s %d KB ",display,sdf.format(super.lastModified()).toString(),
+                this.length()/1024);
     }
     
     
